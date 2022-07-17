@@ -7,4 +7,4 @@ if __name__ == '__main__':
     uu_bot.check_acc_by_url()
 
     print("test")
-    print("moer test")
+    print(" test")
