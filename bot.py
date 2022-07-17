@@ -12,9 +12,10 @@ import time
 
 class Bot:
 
-    def __init__(self, url, email):
+    def __init__(self, url, email, passwrd):
         self.url = url
         self.email = email
+        self.passwrd = passwrd
 
     def check_acc_by_url(self):
         # browser settings
@@ -22,11 +23,20 @@ class Bot:
         options.headless = False
         options.add_experimental_option("detach", True)
 
-        # browser init and call product url
+        # browser init and call url
         browser = webdriver.Chrome(
             ChromeDriverManager().install(), options=options)
         browser.maximize_window()
         browser.get(self.url)
+
+        # login
+        browser.find_element(By.ID, "EmailTextBox").send_keys(self.email)
+        browser.find_element(By.ID, "PasswordTextBox").send_keys(self.passwrd)
+        time.sleep(2)
+        browser.find_element(
+            By.CSS_SELECTOR, "a.smallbutton").click()
+
+        time.sleep(10)
 
         regio = Select(browser.find_element(By.ID, "RegioDropDown"))
         regio.select_by_visible_text("Utrecht")
