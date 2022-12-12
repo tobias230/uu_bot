@@ -4,9 +4,16 @@ from email.message import EmailMessage
 
 class Alert:
     def email_alert(subject, body, to):
-        # gmx account
-        user = "tobias.zenner@gmx.de"
-        password = "T0b1aS99"
+        '''
+        This function sends an email alert to the specified email address, and is triggered when an accomodation was found.
+        :param subject: subject of email
+        :param body: body of email
+        :param to: email receiver address
+        :output: send email with specified parameters
+        :return: print message
+        '''
+        user = "email"
+        password = "password"
 
         # mail message init
         msg = EmailMessage()

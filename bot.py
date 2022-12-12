@@ -13,11 +13,22 @@ import time
 class Bot:
 
     def __init__(self, url, email, passwrd):
+        '''
+        initialize Bot class. The class is used to create the scraping Bot.
+        :param url: url of housing website
+        :param email: login user name
+        :param passwrd: login password
+        :return: initialized Bot object
+        '''
         self.url = url
         self.email = email
         self.passwrd = passwrd
 
     def check_acc_by_url(self):
+        '''
+        This is key function of the Bot. 1.website login and filter selection, 2.refresh page until accomodation listed (loop)
+        :return: print message (system status)
+        '''
         # browser settings
         options = Options()
         options.headless = False
@@ -75,4 +86,4 @@ class Bot:
                 print("nothing available")
                 browser.execute_script("location.reload(true);")
 
-            time.sleep(20)
+            time.sleep(10)
